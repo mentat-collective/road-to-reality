@@ -1,0 +1,9 @@
+{:paths ["dev" "essays"]
+ :deps {io.github.nextjournal/clerk {:mvn/version "0.8.486"}
+        sicmutils/sicmutils {:mvn/version "0.22.0"}}
+ :aliases
+ {:nextjournal/clerk
+  {:exec-fn nextjournal.clerk/build-static-app!
+   :exec-args {:bundle? false
+               :paths ["index.md"
+                       "essays/**/*.clj"]}}}}
