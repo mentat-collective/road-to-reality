@@ -1,9 +1,26 @@
-{:paths ["dev" "essays"]
- :deps {io.github.nextjournal/clerk {:mvn/version "0.8.486"}
-        sicmutils/sicmutils {:mvn/version "0.22.0"}}
+{:paths ["src" "dev" "essays"]
+ :deps {org.clojure/clojure {:mvn/version "1.11.1"}
+        io.github.nextjournal/clerk
+        {:git/sha "4329fa31b75bf26c04bdcc803a52fe642baec56e"}
+
+        io.github.mentat-collective/emmy-viewers
+        {:git/sha "3297ff0dae061d6b16a75a50eea48e69bc4750f7"
+         ;; This is required because Clerk specifies SCI using a
+         ;; git dependency and `clojure` can't resolve the
+         ;; conflict.
+         :exclusions [org.babashka/sci org.mentat/emmy]}
+
+        org.mentat/emmy {:mvn/version "0.31.0-SNAPSHOT"
+                         :exclusions [org.babashka/sci]}
+
+        io.github.mentat-collective/clerk-utils
+        {:git/sha "a508ab01d0fb04a44c0a6a1dd510207b2ca7135e"}}
  :aliases
  {:nextjournal/clerk
-  {:exec-fn nextjournal.clerk/build-static-app!
-   :exec-args {:bundle? false
-               :paths ["index.md"
-                       "essays/**/*.clj"]}}}}
+  {:extra-deps
+   {io.github.nextjournal/clerk.render
+    {:git/url "https://github.com/nextjournal/clerk"
+     ;; make sure this sha matches the one in `:deps` above.
+     :git/sha "4329fa31b75bf26c04bdcc803a52fe642baec56e"
+     :deps/root "render"}}
+   :exec-fn user/build!}}}
