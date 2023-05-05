@@ -47,7 +47,7 @@
 (def static-defaults
   (assoc defaults
          :browse? false
-         :paths ["essays/**.clj" "essays/**.cljc"]
+         :paths ["essays/**.clj" "essays/**.cljc" "essays/**.md"]
          :cname "reality.mentat.org"
          :git/url "https://github.com/mentat-collective/road-to-reality"))
 

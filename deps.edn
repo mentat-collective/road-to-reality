@@ -15,6 +15,7 @@
 
         io.github.mentat-collective/clerk-utils
         {:git/sha "a508ab01d0fb04a44c0a6a1dd510207b2ca7135e"}}
+
  :aliases
  {:nextjournal/clerk
   {:extra-deps
@@ -23,4 +24,10 @@
      ;; make sure this sha matches the one in `:deps` above.
      :git/sha "4329fa31b75bf26c04bdcc803a52fe642baec56e"
      :deps/root "render"}}
-   :exec-fn user/build!}}}
+   :exec-fn user/build!}
+
+  :repl
+  {:main-opts
+   ["-e"
+    "(do (require 'emmy.env) (in-ns 'emmy.env) (println \"Clojure\" (clojure-version)))"
+    "-r"]}}}

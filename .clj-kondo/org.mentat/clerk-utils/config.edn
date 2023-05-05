@@ -1,0 +1,17 @@
+{:lint-as
+ {mentat.clerk-utils/->clerk clojure.test/do
+  mentat.clerk-utils/->clerk-only clojure.test/do}
+
+ :hooks
+ {:analyze-call
+  {mentat.clerk-utils.viewers/q hooks.mentat.clerk-utils.viewers/q}}
+
+ :config-in-call
+ {mentat.clerk-utils.show/show-sci
+  {:linters
+   {:unresolved-symbol {:level :off}
+    :unresolved-namespace {:level :off}}}
+  mentat.clerk-utils.show/show-cljs
+  {:linters
+   {:unresolved-symbol {:level :off}
+    :unresolved-namespace {:level :off}}}}}

@@ -1,0 +1,62 @@
+(ns hooks.mentat.clerk-utils.viewers
+  (:require [clj-kondo.hooks-api :as api]))
+
+(defn set-node?
+  "This is missing from `hooks-api`, so we hack it here."
+  [n]
+  (= :set (api/tag n)))
+
+;; Lint the argument of `q` by treating everything as quoted, except anything
+;; inside an [[unquote?]] or [[unquote-splice?]] form.
+
+(defn unquote?
+  "Returns true if the supplied `node` is an `:unquote` node, false otherwise."
+  [node]
+  (= :unquote (:tag node)))
+
+(defn unquote-splice?
+  "Returns true if the supplied `node` is an `:unquote-splicing` node, false
+  otherwise."
+  [node]
+  (= :unquote-splicing (:tag node)))
+
+(def any-unquote?
+  "Returns true if the supplied `node` is either of the unquote
+  forms (`:unquote` or `:unquote-splicing`, false otherwise.)"
+  (some-fn unquote? unquote-splice?))
+
+(def coll-node?
+  "Returns true if the supplied `node` is a collection, ie, a list,
+  vector or map, false otherwise."
+  (some-fn api/list-node? api/vector-node? api/map-node? set-node?))
+
+(defn walk-node
+  "Given a function `f` of a node and some `node`, returns a vector of all nodes
+  in the syntax tree represented by `node` for which `(f sub-node)` returns a
+  non-nil result.
+
+  NOTE: The result is an eagerly-evaluated vector, so `f` is permitted to have
+  side effects."
+  [f node]
+  (let [tree  (tree-seq coll-node? :children node)
+        xform (mapcat (fn [x]
+                        (when-let [result (f x)]
+                          [result])))]
+    (into [] xform tree)))
+
+(defn unquotes
+  "If the supplied node is an [[any-unquote?]], acts as identity. Else, returns
+  `nil`."
+  [node]
+  (when (any-unquote? node)
+    node))
+
+(defn q
+  "Converts a node representing an invocation of
+  the [[mentat.clerk-utils.viewers/q]] macro into a vector-node of all lintable
+  forms."
+  [{:keys [node]}]
+  (let [[_ form] (:children node)]
+    {:node
+     (api/vector-node
+      (walk-node unquotes form))}))
