@@ -3,7 +3,6 @@
  :visibility :hide-ns}
 (ns reality.introduction)
 
-;; ## Hello!
+;; ## Welcome to the Road to Reality!
 ;;
-;; Welcome to the Road to Reality essay series! Still nothing here, but I am
-;; getting started.
+;; Still nothing here, but I am getting started.

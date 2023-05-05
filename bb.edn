@@ -3,8 +3,7 @@
         io.github.clj-kondo/clj-kondo-bb
         {:git/tag "v2023.01.20" :git/sha "adfc7df"}}
  :tasks
- {:requires ([babashka.cli :as cli]
-             [pod.borkdude.clj-kondo :as clj-kondo])
+ {:requires ([babashka.cli :as cli])
   :init
   (do (def cli-opts
         (cli/parse-opts *command-line-args* {:coerce {:port :int}}))
@@ -18,7 +17,7 @@
 
   repl
   {:doc "Start a repl with the `emmy.env` (or the supplied namespace) loaded."
-   :task (let [namespace (or (first *command-line-args*) "emmy-env")
+   :task (let [namespace (or (first *command-line-args*) "emmy.env")
                init      (str "(do"
                               (format "(require '%s) (in-ns '%s)"
                                       namespace namespace)
