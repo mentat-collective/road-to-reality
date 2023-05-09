@@ -212,7 +212,7 @@ bb repl
 Then start the server:
 
 ```clj
-(serve!)
+(user/serve!)
 ```
 
 To show a file, pass it to `clerk/show!`:
