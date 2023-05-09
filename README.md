@@ -1,131 +1,149 @@
-# Road to Reality
+[![Substack][substack]][substack-url]
+[![Discord Shield][discord]][discord-url]
+[![License][license]][license-url]
 
-Welcome to the essay series. This project stems from my own frustration at the
-one-way nature of the way I was studying math and physics. When I read books
-like Sussman's, I felt like I was building new machinery in my mind and gaining
-new abilities. I wanted to share what I'd learned, but I couldn't take someone
-else with me.
+# Road to Reality Essays
 
-These essays are my attempt to build up the web of mathematical and physical
-exploration that I've been through on a narrative spine, from small pieces all
-the way to classical mechanics and general relativity.
+Welcome to the Road to Reality!
 
-See the intro essay for more detail.
+The Road to Reality is an essay series by me, [Sam
+Ritchie](https://samritchie.io). Starting with the basics of Lisp (the
+[Clojure](https://clojure.org) programming language, specifically), I'll attempt
+to build up all of the tools required to explore and play with gems of modern
+physics like variational mechanics and general relativity, taking the time for
+interesting side-quests the whole way through.
 
-## Why?
+The essays live at https://reality.mentat.org.
 
-I'm offering these in a spirit of playfulness and generosity, with no explicit
-"useful" purpose beyond the joy of understanding new things with other people. I
-will write about this in one of the essays.
-
-## How do I read the essays?
-
-There are currently two ways to read the essays. The first way is to visit the
-static output: (link to github output!)
-
-I strongly believe that work like this should be ABLE to be read in the same
-environment that the author had available when writing. You can read a paper
-book with pen in hand and mark it up. These computational essays come with their
-own computing environment.
-
-The essays are unique in that each is backed by a source code file written in
-the Clojure programming language. I hope you'll pay the small up front cost
-required to get a computer set up to read these essays alongside their code. The
-environment has the beautiful property that if you change the source code, the
-entire essay will re-render and incorporate your changes. So as you read, if you
-become curious about what a simulation would look like with different initial
-conditions, or how a satellite might behave if you change its orbit... or if you
-want to hijack an essay and turn it into a programmable calculator, you can do
-that!
+I publish updates on the essays in the ["Road to Reality" Substack
+newsletter][substack-url]. Please subscribe at
+https://roadtoreality.substack.com!
 
 ## How can I help?
 
-- Join the Discord and discuss: link to Discord
-- Use these essays as a template to publish your own computational explorations.
-- Send me requests!
-- Sponsor the project.
+The Road to Reality essays are part of my larger attempt to build a system for
+writing and publishing [executable
+textbooks](https://roadtoreality.substack.com/p/the-dynamic-notebook). If you
+find any of this inspiring or interesting, you can:
 
-If you find the project inspiring I'd love to talk. The best thing you can do is
-riff on and share the essays, and to the extent that you find them inspiring,
-use them to teach someone else.
+- Subscribe to the newsletter: [![Substack][substack]][substack-url]
+- Join the Discord community: [![Discord Shield][discord]][discord-url]
+- Send me a note at [sam@mentat.org](mailto:sam@mentat.org).
 
-# Stack
+Please consider sponsoring the effort via [Github
+Sponsors](https://github.com/sponsors/sritchie), or by signing up for a paid
+subscription to the ["Road to Reality" Substack][substack-url].
 
-These essays are written in Clojure and presented using Clerk. Clerk is an
-extensible notebook system, with the lovely feature that YOU can run everything
-here.
+The _best_ thing you can do is riff on and share the essays, and to the extent
+that you find them inspiring, use them to teach someone else.
 
-You might also see this project as a prototype environment for a scientific
-computing and authoring environment.
+## How do I read the essays?
 
-## Emmy
+There are currently two ways to read the essays:
 
-This is the computational engine behind the essays, and is immensely powerful.
-The essays are really a tour of the construction of this library, of advanced
-programming techniques, and of the historical origin of scmutils and Sussman's
-work in Scheme and Lisp.
+- Read the static output at https://reality.mentat.org
+- Run them as a program, and edit and play along as you read!
 
-https://github.com/mentat-collective/emmy
+I strongly believe that work like this should be read in the same environment
+that I used while writing. You can read a paper book with pen in hand, mark it
+up and take margin notes; why not do the same with these executable essays?
 
-## Clerk
+Each essay is backed by a source code file written in the Clojure programming
+language. I hope you'll pay the small up-front cost of setting up your computer
+and downloading the essays (described in the ["Running the
+Essays"](#running--editing-the-essays) section).
 
-The core, extensible system. This is the rendering and publishing engine for the
-project. I've extended, or am planning to extend, Clerk with a number of
-"viewers" that make it possible to interact with mathematical objects and
-visualizations.
+The environment has the beautiful property that if you (you!!) change the source
+code, the entire essay will re-render and incorporate your changes.
 
-## mathbox.cljs
+So as you read, if you become curious about what a simulation would look like
+with different initial conditions, or how a satellite might behave if you change
+its orbit... or if you want to hijack an essay completely and turn it into a
+programmable calculator, you can do that!
 
-I was very inspired by this work, and currently have a grant to make these tools
-available to the wider Clojure community. Mathbox is a visualization engine
-written on top of three.js... all of these are technologies I don't know that
-well, but the idea is that I want to be able to describe a scene of mathematical
-objects and have them render.
+These essays are successful only to the extent that you feel empowered to edit
+and fiddle with them, and maybe even use the tools to explore and learn on your
+own.
 
-https://github.com/mentat-collective/mathbox.cljs
 
-## jsxgraph, Mafs.cljs
+## Why are you writing these?
 
-Mathbox isn't terribly interactive; you have to work from code. JSXGraph, I
-think, will let me offer essays that are interactive even in their static
-output. None of this works yet but I think it's necessary for the early work.
+My work on this project stemmed from my own frustration at the one-way nature of
+the way I was studying math and physics. When I read books like Sussman and
+Wisdom's ["Structure and Interpretation of Classical Mechanics"][sicm-book-url],
+I felt like I was building new machinery inside my head that let me see new
+patterns in the world that I hadn't been able to see before.
 
-https://jsxgraph.uni-bayreuth.de/wp/index.html
+I wanted to share what I'd learned, but the only language available was
+symbol-heavy and inscrutable to my friends. I couldn't show anyone what I could
+now see in my head.
 
-## MathLive
+My work on the [Emmy computer algebra system](https://emmy.mentat.org) and the
+other projects [described on the "Tools"
+page](https://reality.mentat.org/essays/reality/tools) is my attempt to make
+tangible and accessible some of the discoveries and progression that humans have
+achieved in math and physics over the last 2,000 years in a way that feels less
+like torture and more like exploring a beautiful, strange series of simulations
+and video games.
 
-I want an equation editor, and I'm going to follow Chris's lead here. This looks
-like an awesome project.
+Put more simply: An executable Wikipedia / Digital Museum full of interactive
+simulations demonstrating our best understanding of the rules reality follows
+_should exist_. No one else seemed to be building it, so I decided to start
+poking around.
 
-[![License][license]][license-url]
+# Running / Editing the Essays
 
-# Demos
+To run the essays, you'll need to complete the following steps:
 
-To run it all:
+- Download the essays to your computer
+- Set up your computer to run the essays
+- Choose a programming "text editor" that you'll use to edit the files
+- Run the program that builds the essays....
+- Play!
+
+if you get stuck at any point, [write up where you're stuck on this
+form](https://github.com/mentat-collective/road-to-reality/issues/new) and I'll
+help you get going.
+
+> **Note**
+>
+> I know that this is a fairly annoying sequence of steps! My goal is to
+> simplify this over time. Eventually you'll be able to read and edit the essays
+> fully in the browser at https://reality.mentat.org. This is where we are now,
+> not where we'll end up.
+
+## Download the Essays
+
+Open your terminal and run the following commands:
 
 ```sh
-bb clerk-watch
+cd ~/Documents # or pick your location
+git clone git@github.com:mentat-collective/road-to-reality.git
+cd road-to-reality
 ```
 
-Then visit http://localhost:7777 if it doesn't open automatically. Visit, change
-and save any of the demos in `essays` to render them in Clerk.
+The essays live inside of the `essays` folder.
 
-> If you find this work interesting, please consider sponsoring it via [Github
-> Sponsors](https://github.com/sponsors/sritchie). Thank you!
+> If you don't know what this means, install [GitHub
+> Desktop](https://desktop.github.com/), create an account or sign in, and
+> choose "Clone a Repository from the Internet". Type the phrase "mentat road",
+> select the first item in the list and click "Clone".
 
 ## Dependencies
 
-Install the following dependencies:
+Install the following dependencies (follow the hyperlinks for install
+instructions):
 
-- TODO note about JVM
+- [Java](https://practical.li/clojure/install/java/)
 - [Clojure CLI tools](https://clojure.org/guides/install_clojure)
 - [`babashka`](https://github.com/babashka/babashka#installation)
 
 You'll also need `node` installed, preferably via
 [`nvm`](https://github.com/nvm-sh/nvm#installing-and-updating).
 
-Run the following command to see all of the [Babashka
-Tasks](https://book.babashka.org/#tasks) declared in `bb.edn`:
+Now, in the `road-to-reality` directory you entered above, run the following
+command to check your installation and see all of the [Babashka
+Tasks](https://book.babashka.org/#tasks) declared in the `bb.edn` file:
 
 ```sh
 bb tasks
@@ -133,12 +151,16 @@ bb tasks
 
 ## Choosing an Editor
 
-Clerk is a notebook environment that requires you to choose your own text editor
-to work with the source files that generate your notebooks.
+The essays are rendered using the [Clerk][clerk-url] notebook system.
 
-Here are links to guides for the most popular editors and Clojure plugins::
+[Clerk][clerk-url] is a program that watches Clojure source code files and
+renders them in a browser window. To use this workflow you'll need to choose
+your own text editor to edit these source files.
 
-- [Calva](https://calva.io/jack-in-guide/) for [Visual Studio Code](https://code.visualstudio.com/)
+Here are links to guides for the most popular editors and Clojure plugins:
+
+- [Calva](https://calva.io/jack-in-guide/) for [Visual Studio
+  Code](https://code.visualstudio.com/) (use this if you're not sure!)
 - [Cider](https://docs.cider.mx/cider/basics/up_and_running.html#launch-an-nrepl-server-from-emacs) for [Emacs](https://www.gnu.org/software/emacs/)
 - [Cursive](https://cursive-ide.com/userguide/repl.html) for [Intellij IDEA](https://www.jetbrains.com/idea/download/#section=mac)
 - [Clojure-Vim](https://github.com/clojure-vim/vim-jack-in) for [Vim](https://www.vim.org/) and [Neovim](https://neovim.io/)
@@ -147,41 +169,33 @@ Here are links to guides for the most popular editors and Clojure plugins::
 > [Calva](https://calva.io/jack-in-guide/) for [Visual Studio
 > Code](https://code.visualstudio.com/).
 
-## Developing with Clerk
+Once you've chosen an editor, open the `road-to-reality` project in the editor
+and navigate to the `essays/reality/introduction.clj` file.
 
-You can develop against Clerk using its file watcher, using manual calls to
-`clerk/show!`, or with a combination of both.
+## Editing the Essays
 
-### Via File-Watcher
+Back at your terminal, run the following command:
 
-The simplest way to interact with Clerk is with Clerk's [file watcher
-mode](https://book.clerk.vision/#file-watcher).
-
-Run the following command to run the `serve!` function in `dev/user.clj`:
-
-```sh
+```
 bb clerk-watch
 ```
 
-Clerk will watch for changes of any file in the `notebooks` directory. The
-ClojureScript build running in the background will pick up any changes to any
-file in the `src` directory.
+Eventually a browser window will appear, pointing to http://localhost:7777. If
+you close the window by accident this link will get you back to the essay view.
 
-Change this by changing the value under `:watch-paths` in `user/serve-defaults`,
-or passing an override to `bb clerk-watch`:
+Now edit any line in `introduction.clj` -- maybe add an exclamation point
+somewhere? -- and save the file. If the browser display updates to the
+introduction essay with your change, you're now in business! Read in the browser
+pane, and edit any example you find in the essays. A simple edit-and-save should
+cause everything to update.
 
-```
-bb clerk-watch :watch-paths '["different_directory"]'
-```
+## REPL-Based Exploration
 
-This will start the Clerk server at http://localhost:7777 with a file
-watcher that updates the page each time any file in the `src` directory changes.
+Alternatively, instead of `bb clerk-watch` follow your editor's instructions
+(see ["Choosing an Editor"](#choosing-an-editor) above) to start a Clojure REPL,
+and then run `(user/serve!)`.
 
-### REPL-Based Development
-
-Alternatively, follow your editor's instructions (see ["Choosing an
-Editor"](#choosing-an-editor) above) to start a Clojure REPL, and then run
-`(user/serve!)`.
+Running the essays this way will let you use the Clojure REPL to explore.
 
 To show or reload a particular notebook, call `nextjournal.clerk/show!` with the
 file's path as argument. The [Book of Clerk](https://book.clerk.vision) has
@@ -192,7 +206,7 @@ You can try this without any editor support by starting a REPL from the command
 line:
 
 ```sh
-clj -A:nextjournal/clerk
+bb repl
 ```
 
 Then start the server:
@@ -204,50 +218,8 @@ Then start the server:
 To show a file, pass it to `clerk/show!`:
 
 ```clj
-(clerk/show! "essays/reality/talk.clj")
+(clerk/show! "essays/reality/introduction.clj")
 ```
-
-> **Note**
-> These commands work because dev/user.clj requires `nextjournal.clerk` under a
-> `clerk` alias, and defines a `serve!` function.
-
-## Custom ClojureScript and JavaScript
-
-All ClojureScript code you add to `src/reality/custom.cljs` is available
-for use inside any [custom viewer code you
-write](https://book.clerk.vision/#writing-viewers).
-
-This is made possible by the code in `src/reality/sci_viewers.cljs`. If you
-want to add more namespaces, follow the instructions in `sci_viewers.cljs` to
-get them into Clerk's SCI environment.
-
-That file also contains instructions on how to make JavaScript and NPM
-dependencies available to your viewers.
-
-## Static Builds
-
-Once you're ready to share your work, run the following command to generate a
-standalone static build of your project to the `public/build` directory:
-
-```sh
-bb build-static
-```
-
-Start a local webserver and view the static build with the following command:
-
-```
-bb serve
-```
-
-Or run both commands in sequence with:
-
-```
-bb publish-local
-```
-
-> By default, the static build will include every file in the `essays`
-> directory. Change this by changing the `:paths` entry in `static-defaults`
-> inside `dev/user.clj`.
 
 ## License
 
@@ -256,8 +228,16 @@ Copyright © 2022-2023 Sam Ritchie.
 Distributed under the [MIT License](LICENSE). See [LICENSE](LICENSE).
 
 [clerk-url]: https://clerk.vision
-[emmy-viewers-url]: https://emmy-viewers.mentat.org
-[fdg-book-url]: http://mitpress.mit.edu/books/functional-differential-geometry
-[license]: https://img.shields.io/badge/License-EPL%201.0-green.svg
+[discord-url]: https://discord.gg/hsRBqGEeQ4
+[discord]: https://img.shields.io/discord/731131562002743336?style=flat&colorA=000000&colorB=000000&label=&logo=discord
+[emmy-slack-url]: https://clojurians.slack.com/archives/C01ECA9AA74
+[fdg-book-url]: https://mitpress.mit.edu/9780262019347/functional-differential-geometry/
 [license-url]: LICENSE
-[sicm-book-url]: https://mitpress.mit.edu/books/structure-and-interpretation-classical-mechanics-second-edition
+[license]: https://img.shields.io/badge/license-MIT-brightgreen.svg
+[physics-in-clj-talk-url]: https://www.youtube.com/watch?v=7PoajCqNKpg
+[refman-url]: https://cljdoc.org/d/org.mentat/emmy/CURRENT/doc/reference-manual
+[substack-url]: https://roadtoreality.substack.com
+[substack]: https://img.shields.io/badge/Substack-%23006f5c.svg?style=flat&logo=substack&logoColor=FF6719
+[scmutils-refman-url]: https://groups.csail.mit.edu/mac/users/gjs/6946/refman.txt
+[sicm-book-url]: https://mitpress.mit.edu/9780262028967/structure-and-interpretation-of-classical-mechanics
+[sicp-book-url]: https://mitpress.mit.edu/9780262510875/structure-and-interpretation-of-computer-programs
