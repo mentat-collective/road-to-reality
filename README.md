@@ -107,10 +107,10 @@ help you get going.
 
 > **Note**
 >
-> I know that this is a fairly annoying sequence of steps! My goal is to
-> simplify this over time. Eventually you'll be able to read and edit the essays
-> fully in the browser at https://reality.mentat.org. This is where we are now,
-> not where we'll end up.
+> I know that this is a fairly annoying sequence of steps! I will simplify this
+> process over time. Eventually you'll be able to read and edit the essays fully
+> in the browser at https://reality.mentat.org. This is where we are now, not
+> where we'll end up.
 
 ## Download the Essays
 
