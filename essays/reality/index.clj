@@ -35,4 +35,6 @@
 
 ;; Copyright © 2023 Sam Ritchie.
 
-;; Distributed under the [MIT License](LICENSE). See [LICENSE](LICENSE).
+;; Distributed under the [MIT
+;; License](https://github.com/mentat-collective/road-to-reality/LICENSE).
+;; See [LICENSE](https://github.com/mentat-collective/road-to-reality/LICENSE).
