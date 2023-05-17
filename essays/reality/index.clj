@@ -1,9 +1,7 @@
 ^{:nextjournal.clerk/visibility
   {:code :hide}}
 (ns reality.index
-  {:nextjournal.clerk/toc true}
-  (:refer-clojure :exclude [+])
-  (:require [emmy.env :refer :all]))
+  {:nextjournal.clerk/toc true})
 
 ;; # Road to Reality Essays
 

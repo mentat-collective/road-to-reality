@@ -23,11 +23,7 @@
 (def custom-namespaces
   {'reality.custom custom-namespace})
 
-(def custom-aliases
-  {'custom 'reality.custom})
-
 (sci.ctx-store/swap-ctx!
  sci/merge-opts
  {:classes    {'Math  js/Math}
-  :namespaces custom-namespaces
-  :aliases    custom-aliases})
+  :namespaces custom-namespaces})
