@@ -11,3 +11,17 @@
      :transform-fn
      (clerk/update-val
       (comp clerk/tex e/->TeX))}]))
+
+(defn substack
+  ([] (substack 100))
+  ([height]
+   (clerk/html
+    [:center
+     [:iframe
+      {:src "https://roadtoreality.substack.com/embed"
+       :width "100%" :height height
+       :style
+       {:border "1px solid #EEE"
+        :background "white"
+        :frameborder 0
+        :scrolling "no"}}]])))
