@@ -4,7 +4,7 @@
         {:git/sha "4329fa31b75bf26c04bdcc803a52fe642baec56e"}
 
         io.github.mentat-collective/emmy-viewers
-        {:git/sha "3297ff0dae061d6b16a75a50eea48e69bc4750f7"
+        {:git/sha "0ae1d00133cc49fcd6a32363abaf3cf0c7a71f06"
          ;; This is required because Clerk specifies SCI using a
          ;; git dependency and `clojure` can't resolve the
          ;; conflict.
