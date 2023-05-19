@@ -8,16 +8,22 @@ Welcome to the Road to Reality!
 
 The Road to Reality is an essay series by me, [Sam
 Ritchie](https://samritchie.io). Starting with the basics of Lisp (the
-[Clojure](https://clojure.org) programming language, specifically), I'll attempt
-to build up all of the tools required to explore and play with gems of modern
-physics like variational mechanics and general relativity, taking the time for
-interesting side-quests the whole way through.
+[Clojure](https://clojure.org) programming language, specifically), we'll build
+a modern computer algebra system and use that system to explore and simulate
+gems of modern physics like variational mechanics and general relativity.
 
-The essays live at https://reality.mentat.org.
+The only way to really learn how a machine works is to build one yourself. By
+the time we're through, you'll understand modern physics with the intuitive ease
+of a mechanic debugging the drivetrain of a familiar car. You will have _built
+the car_, and will be able to drive the car with confidence into the strange
+country of quantum mechanics, general relativity, chaos theory and phase space.
+
+The essays live at https://reality.mentat.org. Get started reading at the
+[Introduction](https://reality.mentat.org/essays/reality/introduction).
 
 I publish updates on the essays in the ["Road to Reality" Substack
 newsletter][substack-url]. Please subscribe at
-https://roadtoreality.substack.com!
+https://roadtoreality.substack.com.
 
 ## How can I help?
 
@@ -64,7 +70,6 @@ programmable calculator, you can do that!
 These essays are successful only to the extent that you feel empowered to edit
 and fiddle with them, and maybe even use the tools to explore and learn on your
 own.
-
 
 ## Why are you writing these?
 

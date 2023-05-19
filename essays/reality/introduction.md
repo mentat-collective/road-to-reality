@@ -1,6 +1,7 @@
 ```clojure
 ^{:nextjournal.clerk/visibility {:code :hide}}
 (ns reality.introduction
+  "The first essay in the Road to Reality series."
   {:nextjournal.clerk/toc true}
   (:refer-clojure
    :exclude [+ - * / zero? compare divide numerator denominator
@@ -17,32 +18,46 @@
 (rv/install!)
 ```
 
+```clojure
+#_"
+If you're reading this, you've figured out how to run and read this essay from its source code. Welcome!
+
+Clerk supports files written in Markdown format (ending in `.md`) or Clojure format (ending in `.clj`.)
+
+This particular essay is written in Markdown. If you want to add new code forms for Clerk to evaluate, you'll need to surround them in a code fence of triple backticks like the one surrounding this string.
+
+I did this because this particular essay is so prose-heavy! In `.clj` essays you can drop code anywhere you like and Clerk will evaluate it and splice in results.
+"
+```
+
 # Introduction
 
 ## Welcome to the Road to Reality!
 
 Over the course of this essay series, you are going to build a workshop full of
-all of the tools required to create and explore simulated worlds that behave
-like our most advanced models of reality.
+the tools required to create and explore simulated worlds that behave like our
+most advanced models of reality.
 
-Each tool in the workshop will take the form of a program written in a
-programming language called Lisp[^clojure]; accordingly, you will learn how to
-read and write Lisp code as a side-effect of our journey together. Lisp is one
-of our oldest programming languages, and has a famously tiny core[^lisp].
+Each tool in the workshop will take the form of a program written in the Lisp
+programming language[^clojure]; accordingly, you will learn how to read and
+write Lisp code as a side-effect of our journey together. Lisp is one of our
+oldest programming languages. The entire language definition fits on half a
+sheet of paper[^lisp]. Out of this small set of fundamentals you will learn to
+describe our universe.
 
-The only way to really learn how something works is to build it yourself. By the
-time we're through, you'll understand modern physics like a mechanic understands
-the drivetrain of car &mdash; you will have _built the car_ and can drive your
-car into the strange country of quantum mechanics, general relativity, chaos
-theory and phase space.
+The only way to really learn how a machine works is to build one yourself. By
+the time we're through, you'll understand modern physics with the intuitive ease
+of a mechanic debugging the drivetrain of a familiar car. You will have _built
+the car_, and will be able to drive the car with confidence into the strange
+country of quantum mechanics, general relativity, chaos theory and phase space.
 
-[^clojure]: Specifically a dialect of Lisp called
+[^clojure]: More precisely, in a dialect of Lisp called
     [Clojure](https://clojure.org/).
 
-[^lisp]: Blah blah [half a page of
-    code](https://michaelnielsen.org/ddi/lisp-as-the-maxwells-equations-of-software/)
+[^lisp]: See Michael Nielsen's lovely essay [_Lisp as the Maxwell’s equations of
+    software_](https://michaelnielsen.org/ddi/lisp-as-the-maxwells-equations-of-software/).
 
-## Why Physics?
+## Physics as Discovery
 
 The tools you'll build are the tools of modern physics, and the story of their
 design is the story of thousands of years of difficult, creative, intense work
@@ -56,24 +71,41 @@ In fact there doesn't seem to be anything going on in the universe that
 _doesn't_ follow some predictable pattern, or law. The tooth-and-nail fight to
 figure out these patterns led to the invention of mathematics and science. Of
 course, once humans figured out that nature acted according to patterns, we
-began to figure out ways to control nature through engineering.
+began to figure out ways to control nature, bringing the disciplines of
+engineering into the story.
 
-Our knowledge of how reality works is written down in the language of
-mathematics, like this[^euler]:
+Our knowledge of how reality unfolds is written in the language of mathematics,
+in equations like this one[^euler]:
 
 $$D\left(\partial_{2} L \circ \Gamma[q]\right)- \partial_{1} L \circ \Gamma[q] = 0$$
 
-[^euler]: These are the Euler-Lagrange equations, written in functional notation.
+[^euler]: The [Euler-Lagrange
+    equations](https://tgvaughan.github.io/sicm/chapter001.html#h1-6), written
+    in functional notation.
 
-Most of us can't look at this line of text and see any connection to reality.
-The problem is that mathematics [can't](https://google.com) _perform itself_.
+This line of text expresses a profound statement about the thrifty way that
+physical systems evolve, spending as little as possible of the difference
+between the system's kinetic and potential energy as time ticks forward.[^action]
 
-Sometimes we get pictures! For example, this image[^irons] describing the path a
-particle attached to a donut would take:
+[^action]: This idea is called the "Principle of Least Action".
 
-[^irons]: From [_"Geodesics of the
+Most of us (myself included) look at this line of text and can't visualize
+anything at all! If you're not one of the tiny number of people that have
+learned to interpret these symbols, you're deprived of the ability to understand
+the details of this grand human story, let alone contribute to its next
+chapters.
+
+We can do better. Take an example of a system that's easy to visualize[^irons]:
+a particle attached to the surface of a donut, moving along and pulled into a
+bending path by the donut's curves. You might imagine something some pattern
+like this:[^why]
+
+[^irons]: Image from [_"Geodesics of the
     Torus"_](http://www.rdrop.com/~half/math/torus/geodesics.xhtml), by Mark
-    Irons
+    Irons.
+
+[^why]: Physics is full of weird, simplified examples that act as a crack in the
+    door to big problems. Just go with it for now!
 
 ```clojure
 ^{::clerk/visibility {:code :hide}}
@@ -81,7 +113,25 @@ particle attached to a donut would take:
  "http://www.rdrop.com/~half/math/torus/period.1.unbounded.5-loop.geodesic.png")
 ```
 
-By the end we'll write code to generate this simulated world.
+Here are the equations of motion for that system. To describe the actual path
+the particle will take, when you plug in the various distances and angles, both
+of these equations have to come out to zero at every moment in time:
+
+```clojure
+^{::clerk/visibility {:code :fold}
+  ::clerk/width :full}
+(let [L     (toroid/L-toroidal 'R 'r)
+      theta (literal-function 'theta)
+      phi   (literal-function 'phi)]
+  (simplify
+   (((Lagrange-equations L) (up theta phi))
+    't)))
+```
+
+I don't see anything in my head when I look at these equations. But! I generated
+the equations using a program, and your computer will happily use them to
+animate a little microworld. This simulation shows the bead rolling around with
+its future path projected ahead of it:
 
 ```clojure
 ^{::clerk/viewer toroid/geodesic-viewer
@@ -108,96 +158,81 @@ By the end we'll write code to generate this simulated world.
     :scale [3 3 3]}})
 ```
 
-[discovery fiction](https://michaelnotebook.com/df/index.html)!
+Now we have something tangible to play with[^future]. In a future essay we'll
+add controls for modifying the shape of the torus and firing the bead off at
+different starting angles. There are wild patterns lurking in simple systems.
 
-building all of the tools required to simulate reality, and programming little
-microworlds that will let us explore all of the strangeness waiting for us at
-large and small scales.
+[^future]: Drag the camera around with your mouse or finger and zoom in and out.
+    You'll see this example again in more interactive style.
 
+## Executing the Essays
 
-We are going to start with a Lisp interpreter, and build a powerful, modern
-computer algebra system capable of solving Einstein's field equations. Some of
-this tooling exists, and some of it we'll be building together in support of the
-essays.
+To build the tools covered in the series, you'll need to set up your computer
+with the same environment that I used to write the essays.[^online]
 
-### Why?
+[^online]: In a future version of the essays, I hope you'll be able to complete
+    every exercise in the browser without needing to set up your local machine.
+    But even in that world I would highly recommend the non-browser route.
 
-I have spent the last two years digging through scmutils and converting it into
-Emmy. The library reads like the memoir an engineer; you see ideas about system
-design and physics forming as the library accumulates depth. The experience
-convinced me that there is a powerful human story lurking behind the code.
+Follow the instructions at the [Road to Reality GitHub
+repository](https://github.com/mentat-collective/road-to-reality#running--editing-the-essays).
+As I say in that guide, if you get stuck at any point, [write up where you're
+stuck using this
+form](https://github.com/mentat-collective/road-to-reality/issues/new) and I'll
+help you get going.
 
-GJS started this library during a sabbatical to hang out with Feynman. Early
-versions led to the Digital Orrery, a supercomputer that he designed to
-investigate whether our solar system is chaotic. Will the whole system shake
-itself apart?
+Each of the essays is a _program_, written as a mix of prose and Clojure
+code[^code] forms.
 
-The library is a recapitulation of thousands of years of human discovery and
-progress.
+[^code]: This essay's source code [lives
+here](https://github.com/mentat-collective/road-to-reality/blob/main/essays/reality/introduction.clj).
 
-I have an idea of where we're going, but I expect to drag you off in all
-sorts of interesting mathematical and historical directions. The difference
-between this and your typical mathematical blog or book is that everything we
-explore will be usable by you, potentially in your own work, potentially in a
-personal playground that you can model off of these essays.
+Another program called [Clerk](https://clerk.vision/) executes this
+essay-program each time I save the file and renders the changes to the
+http://localhost:7777 in my browser.
 
-### What is Physics?
+Clerk treats prose and comments as Markdown
+[Markdown](https://www.markdownguide.org/basic-syntax) and formats output
+accordingly.
 
-Humans have fought hard over thousands of years to figure out the laws that
-seem to govern our reality.
+When Clerk encounters a Clojure expression, it evaluates the expression and
+displays the result below the expression that produced it. For example, this
+expression should evaluate to 6[^clojure]:
 
-This is an amazing human drama. What the hell does it all mean? As we've gone
-we've developed tools that have led to all sorts of engineering advances...
-we can exert control over the world too.
-
-These laws are written in the language of mathematics. Unfortunately most of
-us don't read math... most of can't participate in the journey, or even
-appreciate what it is that we've figured out.
-
-## Why programming?
-
-Programming lets us build little worlds. This is the only way to understand
-what we're doing. Quote Sussman too.
-
-## Goals
-
-At the end of the series you will:
-
-- Know how to program!
-- Understand what the _goals_ of physics are, and what it means to "model reality"
-- Understand modern physics deep in your bones...
-
-I think that the best way to understand math and physics is to build it
-yourself, to fashion your own telescope.
-
-## Executable Essays
-
-Each of these essays, including this introduction, is a program. The notebook
-system executed this program to generate the output that you're reading!
-
-Clerk scans the file (here's the file that generates this), and every time it
-sees a code form, it outputs the code form and then, below it, the _result_
-of running that code:
+[^clojure]: We'll cover Clojure syntax as we go. The basic idea is that you
+    treat lists as `(<function> <argument 1> <argument 2> <...etc>)`. Evaluating
+    a form means, evaluate each argument; pass all argument to the function;
+    replace the list with the result; keep going until there are no lists left.
 
 ```clojure
-(+ 1 2)
+(+ 1 2 3)
 ```
 
-Thanks to Emmy, we can also do math:
+Clerk's superpower is that it is _moldable_. We can teach Clerk to render
+different kinds of expressions using any visualization that the browser can
+handle.
+
+### Emmy
+
+Every notebook has access to the powerful
+[Emmy](https://github.com/mentat-collective/emmy) computer algebra system. Emmy
+extends Clojure with all of the abilities and tools required to run advanced
+physics simulations[^df].
+
+[^df]: Over the course of the essays you'll build many pieces of Emmy from
+    scratch. We are practicing [discovery
+    fiction](https://michaelnotebook.com/df/index.html) at its finest.
+
+
+I can write math by adding together Clojure's symbols instead of numbers, and
+Clerk will print the result as beautiful $\LaTeX$:
 
 ```clojure
 (+ 'x 'y)
 ```
 
-### Lisp / Clojure
-
-We're going to do this with a programming language called Clojure.
-
-### Clerk
-
-Clerk extends this by letting us _teach_ the system how to show off values.
-
-`+` is a function, and we can make our own using `defn`...
+In a more advanced example, I can add new functions, or programmer's verbs, to
+the environment:
 
 ```clojure
 (defn f [x]
@@ -206,33 +241,36 @@ Clerk extends this by letting us _teach_ the system how to show off values.
      x))
 ```
 
-Then we can call it:
+Here is the result of calling `f` with symbol `'x`, rendered in mathematical
+notation:
 
 ```clojure
 (f 'x)
 ```
 
-We can also show^[If you are _astute_ enough!] it as a plot:
+I can also pass `f` to the `plot/of-x` function, producing a result that Clerk
+renders as an in-line, scrollable mathematical plot[^viewers]:
+
+[^viewers]: using code from the
+    [emmy-viewers](https://github.com/mentat-collective/emmy-viewers) library.
 
 ```clojure
 (plot/of-x f {:color (:blue plot/Theme)})
 ```
 
-And of course we can build up interesting scenes.
+You'll become comfortable with the plotting system as we proceed, but I can't
+resist showing off the ability to compose detailed, scrollable visualizations:
 
 ```clojure
-(plot/mafs {:height 400}
-           (plot/cartesian)
-           (plot/of-x f {:color (:blue plot/Theme)})
-           (plot/of-x (D f) {:color (:green plot/Theme)})
-           (plot/of-x ((square D) f) {:color (:violet plot/Theme)}))
+(plot/mafs
+ {:height 400}
+ (plot/cartesian)
+ (plot/of-x f {:color (:blue plot/Theme)})
+ (plot/of-x (D f) {:color (:green plot/Theme)})
+ (plot/of-x ((square D) f) {:color (:violet plot/Theme)}))
 ```
 
-Interactive scenes[^show-code]. I expect this will be impenetrable now, you'll
-be able to read this.
-
-[^show-code]: This is a sidenote. The purpose of this text is to merely
-demonstrate the use of sidenotes.
+or interactive scenes, with glowing pink points that invite manipulation:
 
 ```clojure
 ^{::clerk/visibility {:code :fold}}
@@ -253,10 +291,25 @@ demonstrate the use of sidenotes.
      (plot/movable-point {:atom !c}))))
 ```
 
-And you should be able to go off in directions that I had never imagined
-before, and trivially share those changes back out to me.
+## What you need to know
 
-Let's let Feynman have the final word:
+At the end of this series, you will:
+
+- Have built your own workshop full of software that you can use to simulate
+  reality and explore the leading edge of mathematical physics
+
+- Understand the ideas behind these tools in a deep, intuitive way
+
+- Have become a proficient programmer, comfortable with a text editor and a
+  means for running and exploring code
+
+I will have been successful if you head off in directions that I've never
+imagined, and use what you've learned to teach or excite someone else in your
+life.
+
+For a final dose of motivation, here's Richard Feynman on the enriching effect
+that his study of physics has had on his appreciation for the beauty and
+structure that animates our world:
 
 > Poets say science takes away from the beauty of the stars—mere globs of gas
 > atoms. Nothing is “mere.” I too can see the stars on a desert night, and feel
@@ -276,18 +329,27 @@ Let's let Feynman have the final word:
 
 [^feynman]: From lecture 3 of [_"The Feynman Lectures on
 Physics"_](https://www.feynmanlectures.caltech.edu/I_03.html), by Richard
-Feynman
+Feynman.
 
-## What you need to know
-
-Summarize the chapter here.
-
-Next, we'll talk about what it means to "model reality"!
+For updates on the project and notifications about new essays, please subscribe
+to the Road to Reality newsletter:
 
 ```
 ^{::clerk/visibility {:code :hide}}
 (rv/substack)
 ```
 
+## Exercises
 
-sample chapter from Tao https://terrytao.files.wordpress.com/2020/10/sample_chapter.pdf
+1. Follow the instructions at the [Road to Reality GitHub
+   repository](https://github.com/mentat-collective/road-to-reality#running--editing-the-essays),
+   and get to the point where you have this essay open and a running Clerk
+   process.
+2. Edit the definition of `f` above and save the file. Notice that any
+   expression that depends on `f` refreshes automatically.
+3. Play around in the scratchpad below, saving after each edit and noticing the
+   results that Clerk renders[^markdown].
+
+```clojure
+(str "edit me!")
+```

@@ -8,8 +8,6 @@
 
 (defn ToroidPoint
   [{state      :initial-state
-    params     :params
-    keys       :keys
     state->xyz :state->xyz
     :as opts}]
   (reagent.core/with-let
