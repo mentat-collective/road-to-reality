@@ -223,7 +223,7 @@ Then start the server:
 To show a file, pass it to `clerk/show!`:
 
 ```clj
-(clerk/show! "essays/reality/introduction.clj")
+(nextjournal.clerk/show! "essays/reality/introduction.md")
 ```
 
 ## License
