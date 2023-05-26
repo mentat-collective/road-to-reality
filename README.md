@@ -179,6 +179,11 @@ and navigate to the `essays/reality/introduction.clj` file.
 
 ## Editing the Essays
 
+For this you can choose either to use the `clerk-watch` Babashka task or the 
+Clojure REPL. (If you are using Calva it is easiest with the REPL alternative).
+
+### Babashka `clerk-watch`
+
 Back at your terminal, run the following command:
 
 ```
@@ -194,18 +199,39 @@ introduction essay with your change, you're now in business! Read in the browser
 pane, and edit any example you find in the essays. A simple edit-and-save should
 cause everything to update.
 
-## REPL-Based Exploration
-
-Alternatively, instead of `bb clerk-watch` follow your editor's instructions
-(see ["Choosing an Editor"](#choosing-an-editor) above) to start a Clojure REPL,
-and then run `(user/serve!)`.
+### REPL-Based Exploration
 
 Running the essays this way will let you use the Clojure REPL to explore.
+Depending on which editor you are using (or if you are even using an editor) the
+process look a bit different.
+
+#### Calva
+
+1. Use the command: **Calva: Start a Project REPL and Connect (a.k.a. Jack-in)**
+
+   This will start the server and open your web browser at http://localhost:6789/.
+   You can also open this URL in VS Code's **Simple Browser** for a more
+   integrated experience. (If you do, close the auto-opened browser tab).
+1. Edit some prose in the file `essays/reality/index.clj` and save it.
+
+   The browser should update and show your edit. You are in business!
+
+To work with some other essay file, have it opened and active and press:
+<kbd>ctrl</kbd>+<kbd>alt</kbd>+<kbd>space</kbd>, <kbd>enter</kbd>. This will run
+a custom REPL command which calls `nextjournal.clerk/show!`, loading the essay
+in the browser.
+
+#### Other editors
+
+Follow your editor's instructions (see ["Choosing an Editor"](#choosing-an-editor)
+above) to start a Clojure REPL, and then run `(user/serve!)`.
 
 To show or reload a particular notebook, call `nextjournal.clerk/show!` with the
 file's path as argument. The [Book of Clerk](https://book.clerk.vision) has
 [good instructions on how to configure your editor for
 this](https://book.clerk.vision/#editor-integration).
+
+#### No editor
 
 You can try this without any editor support by starting a REPL from the command
 line:

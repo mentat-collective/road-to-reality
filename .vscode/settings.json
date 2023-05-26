@@ -1,0 +1,23 @@
+{
+    "calva.replConnectSequences": [
+        {
+            "name": "Road to Reality REPL",
+            "projectType": "deps.edn",
+            "projectRootPath": ["."],
+            "afterCLJReplJackInCode": "(user/serve! {:port 6789})",
+            "autoSelectForJackIn": true,
+            "autoSelectForConnect": true,
+            "menuSelections": {
+                "cljAliases": [":nextjournal/clerk"]
+            }
+        }
+    ],
+    "calva.customREPLCommandSnippets": [
+        {
+            "name": "Clerk Show Current File",
+            "snippet": "(nextjournal.clerk/show! \"$file\")",
+            "key": "enter",
+            "repl": "clj"
+        }
+    ]
+}
