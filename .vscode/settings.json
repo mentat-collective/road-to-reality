@@ -11,5 +11,13 @@
                 "cljAliases": [":nextjournal/clerk"]
             }
         }
+    ],
+    "calva.customREPLCommandSnippets": [
+        {
+            "name": "Clerk Show Current File",
+            "snippet": "(nextjournal.clerk/show! \"$file\")",
+            "key": "enter",
+            "repl": "clj"
+        }
     ]
 }

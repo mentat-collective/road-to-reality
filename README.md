@@ -216,14 +216,10 @@ process look a bit different.
 
    The browser should update and show your edit. You are in business!
 
-To work with some other file, say `essays/reality/introduction.md`: in the
-Output/REPL window (`output.calva-repl`) enter:
-
-```clojure
-(nextjournal.clerk/show! "essays/reality/introduction.md")
-```
-
-And press `enter`.
+To work with some other essay file, have it opened and active and press:
+<kbd>ctrl</kbd>+<kbd>alt</kbd>+<kbd>space</kbd>, <kbd>enter</kbd>. This will run
+a custom REPL command which calls `nextjournal.clerk/show!`, loading the essay
+in the browser.
 
 #### Other editors
 
