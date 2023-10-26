@@ -183,7 +183,7 @@ Each of the essays is a _program_, written as a mix of prose and Clojure
 code[^code] forms.
 
 [^code]: This essay's source code [lives
-here](https://github.com/mentat-collective/road-to-reality/blob/main/essays/reality/introduction.clj).
+here](https://github.com/mentat-collective/road-to-reality/blob/main/essays/reality/introduction.md).
 
 Another program called [Clerk](https://clerk.vision/) executes this
 essay-program each time I save the file and renders the changes to the
@@ -197,7 +197,7 @@ When Clerk encounters a Clojure expression, it evaluates the expression and
 displays the result below the expression that produced it. For example, this
 expression should evaluate to 6[^evaluate]:
 
-[^evaluate]: See the [Tools](essays/reality/tools#clojure) page to understand
+[^evaluate]: See the [Tools](/essays/reality/tools#clojure) page to understand
     why.
 
 ```clojure
