@@ -102,7 +102,6 @@ To run the essays, you'll need to complete the following steps:
 
 - Download the essays to your computer
 - Set up your computer to run the essays
-- Choose a programming "text editor" that you'll use to edit the files
 - Run the program that builds the essays....
 - Play!
 
@@ -154,6 +153,27 @@ Tasks](https://book.babashka.org/#tasks) declared in the `bb.edn` file:
 bb tasks
 ```
 
+## Editing the Essays
+
+Back at your terminal, run the following command:
+
+```
+bb clerk-watch
+```
+
+Eventually a browser window will appear, pointing to http://localhost:7777. If
+you close the window by accident this link will get you back to the essay view.
+
+Open the file `essays/reality/introduction.md` in any editor of your choice.
+
+Now edit any line in `introduction.md` -- maybe add an exclamation point
+somewhere? -- and save the file. If the browser display updates to the
+introduction essay with your change, you're now in business! Read in the browser
+pane, and edit any example you find in the essays. A simple edit-and-save should
+cause everything to update.
+
+# Further steps
+
 ## Choosing an Editor
 
 The essays are rendered using the [Clerk][clerk-url] notebook system.
@@ -176,23 +196,6 @@ Here are links to guides for the most popular editors and Clojure plugins:
 
 Once you've chosen an editor, open the `road-to-reality` project in the editor
 and navigate to the `essays/reality/introduction.clj` file.
-
-## Editing the Essays
-
-Back at your terminal, run the following command:
-
-```
-bb clerk-watch
-```
-
-Eventually a browser window will appear, pointing to http://localhost:7777. If
-you close the window by accident this link will get you back to the essay view.
-
-Now edit any line in `introduction.clj` -- maybe add an exclamation point
-somewhere? -- and save the file. If the browser display updates to the
-introduction essay with your change, you're now in business! Read in the browser
-pane, and edit any example you find in the essays. A simple edit-and-save should
-cause everything to update.
 
 ## REPL-Based Exploration
 
